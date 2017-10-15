@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="lib/jquery-3.0.0.js"></script>
+    <style type="text/css">
+        .big {
+            font-size: 30px;
+            color: #eee;
+        }
+        .hide {
+            height: 20px;
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function() {
+            // 选择器
+            $(document.body).css('color', 'red');
+
+            $("div > p").addClass('big');
+
+            $("div.hide").mouseover(function(){
+                $(this).hide();
+            });
+            
+            $("input", document.forms[0]).click(function() {
+                $(this).attr('value', '出来了');
+            });
+
+            // 动态创建
+            $("<div><p>hello</p></div>").appendTo(".hide");
+        });
+
+    </script>
+</head>
+<body>
+    <h1>suoyue</h1>
+    <div>
+        <div class="hide">hide me!</div>
+        <p>good morning!</p>
+        <form>
+            <input type="button" value="点一点">
+        </form>
+    </div>
+</body>
+</html>
