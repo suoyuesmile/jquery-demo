@@ -11,6 +11,17 @@
             height: 20px;
             width: 100px;
         }
+        .test {
+            height: 100px;
+            width: 100px;
+            line-height: 100px;
+            text-align: center;
+            color: green;
+        }
+        .active {
+            background: red;
+        }
+
     </style>
     <script type="text/javascript">
         $(function() {
@@ -29,6 +40,69 @@
 
             // 动态创建
             $("<div><p>hello</p></div>").appendTo(".hide");
+
+            $("<div>", {
+                "class": "test",
+                text: "click me",
+                click: function() {
+                    $(this).toggleClass('test');
+                }
+            }).appendTo("body");
+
+            $("<input>", {
+                type: "text",
+                val: "Test",
+                focusin: function() {
+                    $(this).addClass("active");
+                },
+                focusout: function() {
+                    $(this).removeClass("active");
+                }
+            }).appendTo("form");
+
+            // each
+            $("a").each(function() {
+                this.href = "http://suosmile.cn";
+            });
+            $("button").click(function() {
+                $("ul li").each(function(index, domEle) {
+                    $(domEle).css("color", "green");
+                    if ($(this).is("#stop")) {
+                        $("span").text("stop in " + (index+1) );
+                        return flase;
+                    }
+                });
+            });
+
+            // length
+            console.log($("li").length);
+            // selector
+            
+            // context
+            // get
+            console.log($("li").get().reverse());
+
+            // index
+            console.log($("li").index($("#stop")));
+
+            // data 存取对象
+            $("#data").data("test", {
+                first: "suo",
+                last: "yue"
+            });
+            console.log($("#data").data("test").first);
+
+            // removeData
+            $("#data").removeData("test");
+            // console.log($("#data").data("test").last);
+            
+            // queue
+            
+            // dequeue
+            // clearQueue
+            
+            // Ajax
+          
         });
 
     </script>
@@ -41,6 +115,16 @@
         <form>
             <input type="button" value="点一点">
         </form>
+        <a href="">锁越博客</a>
+        <button>change colors</button>
+        <span></span>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li id="stop">3</li>
+            <li>4</li>
+        </ul>
     </div>
+    <div id="data"></div>
 </body>
 </html>
