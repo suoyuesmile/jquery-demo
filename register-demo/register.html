@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .register {
+            height: 250px;
+            width: 300px;
+            padding: 30px;
+            border: 1px black solid;
+
+            margin: auto;
+            overflow: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        .username, .password, .register-btn {
+            margin-left: 40px;
+            margin-top: 20px;
+            height: 30px;
+            width: 200px;
+        }
+        .register-btn {
+            width: 100px;
+        }
+      
+
+    </style>
+    <script src="../lib/jquery-3.0.0.js"></script>
+    <script>
+        $(function() {
+            $("input[name='username']").keyup(function() {
+                var username = $(this).val();
+                $.ajax({
+                    url: "http://101.132.34.184/demo/demo1.php",
+                    dataType: "json",
+                    type: "post",
+                    data: { "username": username },
+                    crossDomain: true,
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<form class="register" action="">
+    <h3>register</h3>
+    <input type="text" class="username" name="username" placeholder="username">
+    <input type="password" class="password" name="password" placeholder="password">
+    <input type="submit" class="register-btn" value="register">
+</form>
+</body>
+</html>

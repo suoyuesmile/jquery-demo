@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../lib/jquery-3.0.0.js"></script>
+    <script>
+        $(function() {
+            $("input[name='username']").change(function() {
+                var username = $("input[name='username']").val();
+                $.ajax({
+                    url: "http://101.132.34.184/demo/demo1.php",
+                    data: {"username": username},
+                    type: "post",
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
+       
+    </script>
+</head>
+<body>
+<form action="">
+    <input type="text" name="username" placeholder="username">
+    <input type="text" name="password" placeholder="password">
+</form>
+</body>
+</html>

@@ -21,6 +21,11 @@
         .active {
             background: red;
         }
+        .tips {
+            height: 20px;
+            width: 100px;
+            border: 1px black solid;
+        }
 
     </style>
     <script type="text/javascript">
@@ -34,7 +39,7 @@
                 $(this).hide();
             });
             
-            $("input", document.forms[0]).click(function() {
+            $(".click", document.forms[0]).click(function() {
                 $(this).attr('value', '出来了');
             });
 
@@ -102,6 +107,32 @@
             // clearQueue
             
             // Ajax
+            // var data = $.ajax({
+            //     type: "post",
+            //     url: "http://101.132.34.184/demo/demo1.php",
+            //     crossDomain: true,
+            //     data: "name=suo&password=male",
+            //     asyns: true,
+            //     cache: false,
+            //     success: function() {
+            //         console.log("good");
+            //     }
+            // }).reponseText;
+            // console.log(data);
+
+            $("input:text").change(function() {
+                var username = $("input[name='username']").val();
+                var html = $.ajax({
+                    url: "http://101.132.34.184/demo/demo1.php",
+                    type: "post",
+                    dataType: "json",
+                    data: {"username": username},
+                    crossDomain: true,
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+            });
           
         });
 
@@ -112,8 +143,10 @@
     <div>
         <div class="hide">hide me!</div>
         <p>good morning!</p>
-        <form>
-            <input type="button" value="点一点">
+        <form action="login.php" method="post">
+            <input type="button" class="click" value="点一点">
+            <input type="text" class="username" placeholder="username" name="username">
+            <span class="tips">ok</span>
         </form>
         <a href="">锁越博客</a>
         <button>change colors</button>

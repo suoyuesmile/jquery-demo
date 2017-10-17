@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .search {
+            height:200px;
+            width: 400px;
+            padding: 30px;
+            border: 1px black solid;
+
+            position: absolute;
+            overflow: auto;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        .find {
+            margin-left: 40px;
+            height: 40px;
+            font-size: 24px;
+        }
+        .list {
+            margin-left: 40px;
+            height: 30px;
+        }
+    </style>
+    <script>
+        $(function() {
+            // function show(data) {
+            //     var length = $("li").length;
+            //     for (var i = 0; i < length; i++) {
+            //         $("li").get(i).
+            //     }
+            // }
+
+            $("input[name='find']").keyup(function() {
+                var nameStr = $(this).val();
+                $.ajax({
+                    url: "",
+                    type: "post",
+                    dataType: "json",
+                    crossDomain: true,
+                    data: { "name", nameStr },
+                    success: function(data) {
+                        show(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<form action="" class="search">
+    <input type="search" name="find" class="find" placeholder="search">
+</form>
+
+</body>
+</html>
